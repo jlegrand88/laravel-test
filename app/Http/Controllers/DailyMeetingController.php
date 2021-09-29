@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\DailyMeeting;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
+use Carbon\Carbon;
+
+use App\Models\DailyMeeting;
 class DailyMeetingController extends Controller
 {
     /**
@@ -14,7 +17,11 @@ class DailyMeetingController extends Controller
      */
     public function index()
     {
-        //
+        $dailys = DailyMeeting::where('created_at', '<=', Carbon::now())
+        ->orderBy('created_at','desc')
+        ->get()
+        ->unique('user_id');
+        return view('daily-meeting', ['dailys' => $dailys]);
     }
 
     /**

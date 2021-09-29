@@ -22,7 +22,7 @@ class ProcessMessage implements IProcessMessage
             'user_id' => ['required', 'exists:users,id'],
             'message' => ['required']
         ])->validate();
-        
+
         if(str_contains( $message, '@daily')) {
             $done = $this->processItem('done:', $message);
             $doing = $this->processItem('doing:', $message);
@@ -44,7 +44,7 @@ class ProcessMessage implements IProcessMessage
             $items = strstr($haystack, $needle);
             $from = strlen($needle);
             $item = substr($items, $from);
-            $itemsList = explode("/", $item);
+            $itemsList = explode("#", $item);
             return $itemsList[0] ? trim($itemsList[0]) : null;
         }
         return null;

@@ -19,14 +19,14 @@ class TeamSeeder extends Seeder
         DB::table('teams')->insert([
             'user_id' => '1',
             'name' => 'admins',
-            'personal_team' => '1',
+            'personal_team' => '0',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ]);
         DB::table('teams')->insert([
             'user_id' => '1',
             'name' => 'developers',
-            'personal_team' => '1',
+            'personal_team' => '0',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ]);
