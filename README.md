@@ -1,64 +1,46 @@
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+# Evaluación de conocimientos PHP/Laravel
 
-## About Laravel
+La evaluación consta en que el postulante realice las tareas solicitadas en los casos de usos descritos a continuación. Se trabajará sobre un proyecto base, en el cual se busca encontrar que además de la funcionalidad, el participante muestre un código que cumpla con buenas prácticas de POO, con la finalidad de lograr un código limpio y fácil de mantener/escalar.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Credenciales de suarios:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+**Usuario del grupo admins:**  
+user: teachlead@test.com  
+password: password  
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+**Usuarios del grupo developers:**  
+user: teachlead@test.com  
+password: password  
+  
+user: teachlead2@test.com  
+password: password  
+  
+**Configuracion Pusher:**
+  
+PUSHER_APP_ID=1272264  
+PUSHER_APP_KEY=4d16828715a88164a4b4  
+PUSHER_APP_SECRET=574783a86ae30d6fc98d  
+PUSHER_APP_CLUSTER=us2  
+  
+El nombre del canal que utiliza el proyecto es **chat-channel** y escucha el evento **chat-event**.
+  
+## Requerimientos:
+  
+    1. Solo los usuarios pertenecientes al grupo admins tendrán acceso a la ruta “teams/create” y podrán usar el CRUD asociado al modelo Team.
 
-## Learning Laravel
+    2. Configurar el proyecto para que utilice pusher con las configuraciones indicadas anteriormente e implementar un chat grupal para que los usuarios puedan interactuar en la  ruta “/dashboard”.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+    3. Los usuarios del equipo podrán ingresar mensajes con la información correspondiente a la reunión diaria, que busca mantener al equipo en conocimiento del progreso de los proyectos en los cuales están participando. Para esto es necesario crear una nueva tabla en la BD con el nombre daily_meetings y las columnas id(PK auto increment), user_id(FK users), done(nullable), doing(nullable), blocking(nullable), todo(nullable), created_at, updated_at.
+       
+    4. La información respecto a la reunión diaria deberá ser guardada en BD cada vez que un usuario ingrese un comentario que cumpla con las siguientes reglas:
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+**@daily:** Cuando un mensaje contiene este string se deben buscar la data de los diferentes ítems.  
+**(done:, doing:, blocking:, todo: ):** Luego de @daily se pueden ingresar estos ítems seguidos del texto a ingresar y el separador para indicar el fin de cada ítem.  
+**#:** Es el separador que indica el fin de cada ítem de la data.  
+  
+	Ejemplo:
+`@daily done: done test message # doing: doing test message# blocking: blocking test message# todo: todo test message`
 
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[CMS Max](https://www.cmsmax.com/)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+    5. Habilitar la ruta “/dailyMeeting” para que liste la información de las reuniones diarias que ya tenemos almacenadas. Solo se deben mostrar los registros correspondientes al día en curso y solo uno por usuario, este último ha de ser el más reciente en los registros.
