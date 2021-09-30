@@ -41,10 +41,6 @@ class TeamPolicy
      */
     public function create(User $user)
     {
-        $team = Team::find(Team::ADMINS_TEAM);
-        if (!$user->belongsToTeam($team)) {
-            return false;
-        }
         return true;
     }
 

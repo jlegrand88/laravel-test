@@ -25,7 +25,3 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 Route::middleware(['auth:sanctum', 'verified'])
 ->get('/dailyMeeting', [DailyMeetingController::class, 'index'])->name('dailyMeeting');
-
-// Route::middleware(['ensureIsAdminsTeamMember'])
-// ->get('teams/create', [Laravel\Jetstream\Http\Controllers\Livewire\TeamController::class, 'create'])
-// ->name('teams.create');
