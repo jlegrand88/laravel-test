@@ -12,7 +12,7 @@
                             'justify-end' => $isCurrenUser
                         ])
                     >
-                        <div 
+                        <div
                             @class([
                                 'rounded-b-lg',
                                 'rounded-tr-lg',
@@ -60,13 +60,12 @@
 
 <script>
     // Enable pusher logging - don't include this in production
-    Pusher.logToConsole = true;
+    Pusher.logToConsole = false;
     var pusher = new Pusher('4d16828715a88164a4b4', {
         cluster: 'us2'
     });
     var channel = pusher.subscribe('chat-channel');
     channel.bind('chat-event', function(data) {
-        // alert(JSON.stringify(data));
         window.livewire.emit('messageReceived', data);
     });
 </script>
