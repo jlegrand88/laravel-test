@@ -11,10 +11,10 @@ user: teachlead@test.com
 password: password  
 
 **Usuarios del grupo developers:**  
-user: teachlead@test.com  
+user: developer@test.com  
 password: password  
   
-user: teachlead2@test.com  
+user: developer2@test.com  
 password: password  
   
 ## Configuraciones    
