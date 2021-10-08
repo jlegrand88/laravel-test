@@ -2,7 +2,9 @@
 
 # Evaluación de conocimientos PHP/Laravel
 
-La evaluación consta en que el postulante realice las tareas solicitadas en los casos de usos descritos a continuación. Se trabajará sobre un proyecto base, en el cual se busca encontrar que además de la funcionalidad, el participante muestre un código que cumpla con buenas prácticas de POO, con la finalidad de lograr un código limpio y fácil de mantener/escalar.
+La evaluación consta en que el postulante realice las tareas solicitadas en los casos de usos descritos a continuación. Se trabajará sobre un proyecto base, en el cual se busca encontrar que además de la funcionalidad, el participante muestre un código que cumpla con buenas prácticas de POO, con la finalidad de lograr un código limpio y fácil de mantener/escalar.  
+  
+El ejercicio ha de realizarse en un repositorio público de github.
 
 ## Credenciales de suarios:
 
