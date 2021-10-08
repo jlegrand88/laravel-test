@@ -48,48 +48,28 @@
                 <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
                     <div class="grid grid-cols-1">
                         <div class="p-6">
-                            <div class="">
-                                <h3>Examen practico</h3>
-                                <pre>
-                                    Evaluación de conocimientos PHP/Laravel
-
-                                    La evaluacion consta en que el postulante realice las tareas solicitadas en los casos de usos descritos a continuacion sobre un proyecto base, en el cual se busca encontrar que ademas de la funcionalidad, el participante muestre un codigo que cumpla con buenas practicas de POO con la finalidad de lograr un codigo limpio y facil de mantener.
-
-                                    Credenciales de suarios:
-
-                                    Usuario del grupo admins:
-                                    user: teachlead@test.com
-                                    password: password
-
-                                    Usuario del grupo developers:
-                                    user: teachlead@test.com
-                                    password: password
-
-                                    Configuracion Pusher:
-                                    PUSHER_APP_ID=1272264
-                                    PUSHER_APP_KEY=4d16828715a88164a4b4
-                                    PUSHER_APP_SECRET=574783a86ae30d6fc98d
-                                    PUSHER_APP_CLUSTER=us2
-
-                                    El nombre del canal que utiliza el proyecto es chat-channel y escucha el evento chat-event.
-
-                                    Requerimientos:
-
-                                        1. Solo los usuarios pertenecientes al grupo admins tendran acceso a la ruta “teams/create” y podran usar el CRUD asociado al modelo Team.
-                                        
-                                        2. Configurar el proyecto para que utilice pusher con las configuraciones indicadas anteriormente e implementar un chat grupal para que los usuarios puedan interactuar en la  ruta “/dashboard”.
-                                        
-                                        3. Los usuarios del equipo podran ingresar mensajes con la informacion correspondiente a la reunion diaria, que busca mantener al equipo en conocimiento del progreso de los proyectos en los cuales estan participando. Para esto es necesario crear una nueva tabla en la BD con el nombre daily_meetings y las columnas (id, user_id, done, doing, blocking, todo, created_at, updated_at).
-                                        
-                                        4. La informacion respecto a la reunion diaria debera ser guardada en BD cada vez que un usuario ingrese un comentario que cumpla con las siguientes reglas:
-                                        
-                                        @daily: Cuando un mensaje contiene este string se deben buscar la data de los diferentes items.
-                                        (done:, doing:, blocking:, todo: ): Luego de @daily se pueden ingresar estos items seguidos del texto a ingresar y el separador.
-                                        /: Es el separador que indica el fin de cada item de la data.
-
-                                        Ejemplo:
-                                        @daily done: done test message / doing: doing test message/ blocking: blocking test message/ todo: todo test message.
-                                </pre>
+                            <div class="justify-start">
+                                <h3>Evaluación de conocimientos PHP/Laravel</h3>
+                                <p>
+                                    Los requerimientos estan detallados en el
+                                    <a class="text-blue-600 underline font-semibold"
+                                    href="https://github.com/jlegrand88/laravel-test-2021"
+                                    target="_BLANK">
+                                        readme
+                                    </a>
+                                    del repositorio.
+                                </p>
+                                <h4>Credenciales de suarios:</h4>
+                                <span class="font-semibold">Usuario del grupo admins:</span></br>
+                                user: teachlead@test.com</br>
+                                password: password</br>
+                                </br>
+                                <span class="font-semibold">Usuarios del grupo developers:</span></br>
+                                user: developer@test.com</br>
+                                password: password</br>
+                                </br>
+                                user: developer2@test.com</br>
+                                password: password</br>
                             </div>
                         </div>
                         <div class="p-6">
