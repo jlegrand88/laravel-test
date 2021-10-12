@@ -39,4 +39,14 @@ class TeamChat extends Component
             'message' => $message
         ];
     }
+
+    public function messageReceived($data)
+    {
+        $this->messages[] = [
+            'userId' => $data['user']['id'],
+            'userName' => $data['user']['name'],
+            'userMail' => $data['user']['email'],
+            'message' => $data['message']
+        ];
+    }
 }

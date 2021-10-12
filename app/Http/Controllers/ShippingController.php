@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Shipping;
-use Illuminate\Http\Request;
-use App\Http\Requests\StoreShippingRequest;
-
 use App\Interfaces\IShippingService;
+
+use Illuminate\Http\Request;
 
 class ShippingController extends Controller
 {
@@ -37,19 +36,18 @@ class ShippingController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreShippingRequest $request, IShippingService $shippingService)
+    public function store(Request $request, IShippingService $shippingService)
     {
-        $validatedData = $request->validated();
-        if($validatedData['destination'] == 1){
+        if($request->input('destination') == 1){
             $destinationAddress = "Sucursal EEUU, Avenue lorem ipsum dolor 13000";
-        } elseif ($validatedData['destination'] == 2) {
+        } elseif ($request->input('destination') == 2) {
             $destinationAddress = "Sucursal X región Chile, Avenida lorem ipsum dolor 16000";
         }
         $shipment = $shippingService->store(
-            $validatedData['name'],
-            $validatedData['height'],
-            $validatedData['width'],    
-            $validatedData['weight'],
+            $request->input('name'),
+            $request->input('height'),
+            $request->input('width'),
+            $request->input('weight'),
             $destinationAddress
         );
         return redirect()->route('shippings.create')->with('shipmentSuccess', $shipment);

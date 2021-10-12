@@ -6,7 +6,6 @@ use Illuminate\Support\ServiceProvider;
 
 use App\Interfaces\IShippingService;
 use App\Services\FakeShippingService;
-use App\Services\OwnShippingService;
 
 class ShippingServiceProvider extends ServiceProvider
 {
@@ -17,15 +16,7 @@ class ShippingServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $request = $this->app->request;
-        if($request->has('destination')){
-            if($request->destination == 2){
-                $this->app->bind(IShippingService::class, OwnShippingService::class);
-            } else {
-                $this->app->bind(IShippingService::class, FakeShippingService::class);
-            }
-        }
-
+        $this->app->bind(IShippingService::class, FakeShippingService::class);
     }
 
     /**
