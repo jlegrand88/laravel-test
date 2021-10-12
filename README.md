@@ -6,7 +6,9 @@ La evaluación consta en que el postulante realice las tareas solicitadas en los
   
 El ejercicio ha de realizarse en un repositorio público de github.
 
-## Credenciales de suarios:
+## Repositorio del proyecto base:
+
+## Credenciales de suarios
 
 **Usuario del grupo admins:**  
 user: teachlead@test.com  
@@ -19,7 +21,8 @@ password: password
 user: developer2@test.com  
 password: password  
   
-## Configuraciones    
+## Configuraciones de ambiente    
+
 **Pusher:**  
 PUSHER_APP_ID=1272264  
 PUSHER_APP_KEY=4d16828715a88164a4b4  
@@ -35,7 +38,7 @@ php artisan migrate:fresh --seed
   
 1. Solo los usuarios pertenecientes al grupo admins tendrán acceso a la ruta **“teams/create”** y podrán usar el CRUD asociado al modelo Team.
 
-2. Configurar el proyecto para que utilice pusher con las configuraciones indicadas anteriormente e implementar un chat grupal para que los usuarios puedan interactuar en la  ruta **“/dashboard”**.
+2. Configurar el proyecto para que utilice pusher con las configuraciones indicadas anteriormente e implementar un chat grupal para que los usuarios puedan interactuar en la  ruta **“/dashboard”**. En esta ruta se encuentra en uso el componente livewire TeamChat.
 
 3. Los usuarios del equipo podrán ingresar mensajes con la información correspondiente a la reunión diaria, que busca mantener al equipo en conocimiento del progreso de los proyectos en los cuales están participando. Para esto es necesario crear una nueva tabla en la BD con el nombre **daily_meetings** y las columnas **id(PK auto increment), user_id(FK users), done(nullable), doing(nullable), blocking(nullable), todo(nullable), created_at, updated_at**.
 
@@ -49,3 +52,17 @@ php artisan migrate:fresh --seed
 
 
 5. Habilitar la ruta **“/dailyMeeting”** para que liste la información de las reuniones diarias que ya tenemos almacenadas. Solo se deben mostrar los registros correspondientes al día en curso y solo uno por usuario, este último ha de ser el más reciente en los registros.
+
+6. En un escenario hipotético presentado en la ruta **“/shippings/create”**. Los usuarios tienen acceso a un formulario en el cual registran envíos de encomiendas con destino a una sucursal en EEUU, el sistema se comunica con un servicio externo ficticio que llamaremos “Fake Shipping Service S.A” el cual se encarga de procesar los datos que enviamos y luego nos devuelve un array con la información del nuevo registro.
+<img src="6.png">  
+En este contexto es necesario que se implemente un nuevo comportamiento cuando los usuarios seleccionen como destino la sucursal en Chile que fue recientemente agregada, para este caso utilizaremos un servicio interno de mensajeria por lo que necesitaremos almacenar los datos del formulario en la tabla **“shippings”** de nuestra BD además del user_id y generar un UUID para el seguimiento del envío.  
+Se debe validar:  
+- Nombre: obligatorio.
+- Alto: obligatorio, numérico, mínimo 1, máximo 2 metros, mostrar el mismo mensaje de obligatoriedad en caso de error por no cumplir el minimo, al violar el maximo el mensaje de error es 'El campo Alto no debe ser mayor a 2 mt.'.
+- Ancho: obligatorio, numérico, mínimo 1, máximo 2 metros, mostrar el mismo mensaje de obligatoriedad en caso de error por no cumplir el minimo, al violar el maximo el mensaje de error es 'El campo Alto no debe ser mayor a 2 mt.'.
+- Peso: obligatorio, numérico, mínimo 1, máximo 10 kg, mostrar el mismo mensaje de obligatoriedad en caso de error por no cumplir el minimo, al violar el maximo el mensaje de error es 'El campo Peso no debe ser mayor a 10 kg.'.
+- Destino: obligatorio, solo puede ser 1 o 2. El valor 1 representa a la sucursal de EEUU y el 2 la de Chile.
+- Mostrar la validación de los campos en español, por lo tanto es necesario traducir el nombre de los atributos mostrados por defecto.
+
+Ejemplo de un mensaje exitoso en el caso de un envio a la sucursal en Chile:
+<img src="6-1.png"> 
