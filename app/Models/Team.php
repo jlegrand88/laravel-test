@@ -13,6 +13,7 @@ class Team extends JetstreamTeam
     use HasFactory;
 
     public const ADMINS_TEAM = 1;
+    public const DEVS_TEAM = 2;
 
     /**
      * The attributes that should be cast.

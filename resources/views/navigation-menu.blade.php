@@ -18,6 +18,9 @@
                     <x-jet-nav-link href="{{ route('dailyMeeting') }}" :active="request()->routeIs('dailyMeeting')">
                         {{ __('Daily Meeting') }}
                     </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('shippings.create') }}" :active="request()->routeIs('shippings.create')">
+                        {{ __('Shipping') }}
+                    </x-jet-nav-link>
                 </div>
             </div>
 

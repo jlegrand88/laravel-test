@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\DailyMeetingController;
+use App\Http\Controllers\ShippingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,9 +20,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+Route::middleware(['auth:sanctum', 'verified'])->group(function(){
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
 
-Route::middleware(['auth:sanctum', 'verified'])
-->get('/dailyMeeting', [DailyMeetingController::class, 'index'])->name('dailyMeeting');
+    Route::resource('shippings', ShippingController::class);
+    Route::post('/processShipping', [ShippingController::class, 'store'])->name('processShipping');
+
+    Route::get('/dailyMeeting', [DailyMeetingController::class, 'index'])->name('dailyMeeting');
+});
