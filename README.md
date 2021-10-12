@@ -53,7 +53,8 @@ php artisan migrate:fresh --seed
 
 6. En un escenario hipotético presentado en la ruta **“/shippings/create”**. Los usuarios tienen acceso a un formulario en el cual registran envíos de encomiendas con destino a una sucursal en EEUU, el sistema se comunica con un servicio externo ficticio que llamaremos “Fake Shipping Service S.A” el cual se encarga de procesar los datos que enviamos y luego nos devuelve un array con la información del nuevo registro.
 <img src="6.png">  
-En este contexto es necesario que se implemente un nuevo comportamiento cuando los usuarios seleccionen como destino la sucursal en Chile que fue recientemente agregada, para este caso utilizaremos un servicio interno de mensajeria por lo que necesitaremos almacenar los datos del formulario en la tabla **“shippings”** de nuestra BD además del user_id y generar un UUID para el seguimiento del envío.  
+
+En este contexto es necesario que se implemente un nuevo comportamiento cuando los usuarios seleccionen como destino la sucursal en Chile que fue recientemente agregada, para este caso utilizaremos un servicio interno de mensajeria por lo que necesitaremos almacenar los datos del formulario en la tabla **“shippings”** de nuestra BD además del user_id y generar un UUID para el seguimiento del envío.    
 Se debe validar: 
 
 - **Nombre:** obligatorio.
