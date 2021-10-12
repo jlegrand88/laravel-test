@@ -55,12 +55,12 @@ php artisan migrate:fresh --seed
 <img src="6.png">  
 En este contexto es necesario que se implemente un nuevo comportamiento cuando los usuarios seleccionen como destino la sucursal en Chile que fue recientemente agregada, para este caso utilizaremos un servicio interno de mensajeria por lo que necesitaremos almacenar los datos del formulario en la tabla **“shippings”** de nuestra BD además del user_id y generar un UUID para el seguimiento del envío.  
 Se debe validar: 
-  
-- Nombre: obligatorio.
-- Alto: obligatorio, numérico, mínimo 1, máximo 2 metros, mostrar el mismo mensaje de obligatoriedad en caso de error por no cumplir el minimo, al violar el maximo el mensaje de error es 'El campo Alto no debe ser mayor a 2 mt.'.
-- Ancho: obligatorio, numérico, mínimo 1, máximo 2 metros, mostrar el mismo mensaje de obligatoriedad en caso de error por no cumplir el minimo, al violar el maximo el mensaje de error es 'El campo Alto no debe ser mayor a 2 mt.'.
-- Peso: obligatorio, numérico, mínimo 1, máximo 10 kg, mostrar el mismo mensaje de obligatoriedad en caso de error por no cumplir el minimo, al violar el maximo el mensaje de error es 'El campo Peso no debe ser mayor a 10 kg.'.
-- Destino: obligatorio, solo puede ser 1 o 2. El valor 1 representa a la sucursal de EEUU y el 2 la de Chile.
+
+- **Nombre:** obligatorio.
+- **Alto:** obligatorio, numérico, mínimo 1, máximo 2 metros, mostrar el mismo mensaje de obligatoriedad en caso de error por no cumplir el minimo, al violar el maximo el mensaje de error es 'El campo Alto no debe ser mayor a 2 mt.'.
+- **Ancho:** obligatorio, numérico, mínimo 1, máximo 2 metros, mostrar el mismo mensaje de obligatoriedad en caso de error por no cumplir el minimo, al violar el maximo el mensaje de error es 'El campo Alto no debe ser mayor a 2 mt.'.
+- **Peso:** obligatorio, numérico, mínimo 1, máximo 10 kg, mostrar el mismo mensaje de obligatoriedad en caso de error por no cumplir el minimo, al violar el maximo el mensaje de error es 'El campo Peso no debe ser mayor a 10 kg.'.
+- **Destino:** obligatorio, solo puede ser 1 o 2. El valor 1 representa a la sucursal de EEUU y el 2 la de Chile.
 - Mostrar la validación de los campos en español, por lo tanto es necesario traducir el nombre de los atributos mostrados por defecto.
 
 Ejemplo de un mensaje exitoso en el caso de un envio a la sucursal en Chile:
