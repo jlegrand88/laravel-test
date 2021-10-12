@@ -6,8 +6,6 @@ La evaluación consta en que el postulante realice las tareas solicitadas en los
   
 El ejercicio ha de realizarse en un repositorio público de github.
 
-## Repositorio del proyecto base:
-
 ## Credenciales de suarios
 
 **Usuario del grupo admins:**  
@@ -56,7 +54,8 @@ php artisan migrate:fresh --seed
 6. En un escenario hipotético presentado en la ruta **“/shippings/create”**. Los usuarios tienen acceso a un formulario en el cual registran envíos de encomiendas con destino a una sucursal en EEUU, el sistema se comunica con un servicio externo ficticio que llamaremos “Fake Shipping Service S.A” el cual se encarga de procesar los datos que enviamos y luego nos devuelve un array con la información del nuevo registro.
 <img src="6.png">  
 En este contexto es necesario que se implemente un nuevo comportamiento cuando los usuarios seleccionen como destino la sucursal en Chile que fue recientemente agregada, para este caso utilizaremos un servicio interno de mensajeria por lo que necesitaremos almacenar los datos del formulario en la tabla **“shippings”** de nuestra BD además del user_id y generar un UUID para el seguimiento del envío.  
-Se debe validar:   
+Se debe validar: 
+  
 - Nombre: obligatorio.
 - Alto: obligatorio, numérico, mínimo 1, máximo 2 metros, mostrar el mismo mensaje de obligatoriedad en caso de error por no cumplir el minimo, al violar el maximo el mensaje de error es 'El campo Alto no debe ser mayor a 2 mt.'.
 - Ancho: obligatorio, numérico, mínimo 1, máximo 2 metros, mostrar el mismo mensaje de obligatoriedad en caso de error por no cumplir el minimo, al violar el maximo el mensaje de error es 'El campo Alto no debe ser mayor a 2 mt.'.
